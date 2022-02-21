@@ -1,0 +1,164 @@
+\documentclass[french]{article}
+%\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tikz-qtree}
+\usepackage{lscape}
+\usepackage{graphicx}
+
+\date{\today}
+
+\title{Compte rendu projet Base de Données 2}
+\author{\bsc{Billaud Maël} \and \bsc{Johan Quentin} \and \bsc{Ramé Tristan} \and \bsc{Goubon Valentin}} 
+\date{Février 2022}
+
+\begin{document}
+
+\newlist{df}{enumerate}{2}
+\setlist[df,1]{label=(\arabic*)}
+
+
+\maketitle
+
+\section{Première partie}
+    \subsection*{Présentation Générale}
+        Dans ce projet, l'objectif est de réaliser une base de données pas à pas. Pour ce faire, nous avons décidé de représenter la base de données d'un service de livraison de nourriture (Naofood, Deliveroo,...).
+        Nous avons donc défini ci-dessous un ensemble d'attributs permettant la gestion d'une telle organisation :\newline U = \{\emph{nom\_resto, type\_cuisine, adr\_resto, tel\_resto, ouvert\_dimanche, note\_resto, nom\_client, prenom\_client, tel\_client, adr\_client, nom\_menu, prix\_menu, nom\_coursier, prenom\_coursier, note\_coursier, date\_course, mode\_deplacement}\}.
+        
+
+    \subsection*{Table générale}
+        Pour des soucis de lisibilités, nous vous joignons notre table initiale, contenant tous les attributs ainsi qu'une dizaine de tuples, sous la forme d'un lien. Celui-ci vous mènera sur notre 
+        \href{https://docs.google.com/spreadsheets/d/1HeSNFvLN3-yMfWHoYLVumzOeQpHXJHynqVBusbvl6EQ/edit?usp=sharing}{\underline{Google Sheet}}.
+    
+    
+    
+    \subsection*{Dépendances fonctionnelles}
+        Vous trouverez ci-dessous les différentes dépendances fonctionnelles que nous avons trouvées pour notre table initiale.
+        \begin{df}
+            \item adr\_resto $\rightarrow$ nom\_resto, tel\_resto, ouvert\_dimanche
+            \item nom\_client, prenom\_client $\rightarrow$ adr\_client, tel\_client
+            \item nom\_menu $\rightarrow$ prix\_menu, nom\_resto
+            \item nom\_coursier, prenom\_coursier $\rightarrow$  mode\_deplacement
+            \item nom\_coursier, prenom\_coursier, date\_course, nom\_menu $\rightarrow$ note\_coursier, note\_resto
+            \item nom\_resto $\rightarrow$ type\_cuisine
+        \end{df}
+        
+        En calculant la clé à partir des DFs définies plus haut, on obtient : \newline
+            clé = \{adr\_resto, nom\_client, prenom\_client, nom\_menu, nom\_coursier, prenom\_coursier, \newline date\_course\}
+        \newpage
+    \subsection*{Algorithmes de normalisation}
+        \subsubsection *{Passage en 3FN, Algorithme de \bsc{Bernstein}}
+            Pour appliquer l'algorithme suivant, on utilise la clé telle que définie plus haut. De manière évidente et en comparant avec les DFs, <R(U), DF> n'est pas en 3FN, on partitionne donc notre schéma en plusieurs ensembles :
+            \begin{itemize}
+                \item[$\bullet$] DF$_{1}$ = \{adr\_resto $\rightarrow$ nom\_resto, tel\_resto, ouvert\_dimanche\} \newline et U$_{1}$ = \{adr\_resto, nom\_resto, tel\_resto, ouvert\_dimanche\}
+                
+                \item[$\bullet$] DF$_{2}$ = \{nom\_client, prenom\_client $\rightarrow$ adr\_client, tel\_client\} \newline et U$_{2}$ = \{nom\_client, prenom\_client, adr\_client, tel\_client\}
+                
+                \item[$\bullet$] DF$_{3}$ = \{nom\_menu $\rightarrow$ prix\_menu, nom\_resto\} \newline et U$_{3}$ = \{nom\_menu, prix\_menu, nom\_resto\}
+                
+                \item[$\bullet$] DF$_{4}$ = \{nom\_coursier, prenom\_coursier $\rightarrow$  mode\_deplacement\} \newline et U$_{4}$ = \{nom\_coursier, prenom\_coursier, mode\_deplacement\}
+                
+                \item[$\bullet$] DF$_{5}$ = \{nom\_coursier, prenom\_coursier, date\_course, nom\_menu $\rightarrow$ note\_coursier, \newline note\_resto\} 
+                \newline et U$_{5}$ = \{nom\_coursier, prenom\_coursier, date\_course, nom\_menu, note\_coursier, \newline note\_resto\}
+                
+                \item[$\bullet$] DF$_{6}$ = \{nom\_resto $\rightarrow$ type\_cuisine\} et U$_{6}$ = \{nom\_resto, type\_cuisine\}
+            \end{itemize}
+            
+            \noindent
+            On constate qu'aucun des schémas obtenus par le partitionnement ne contient de clé de R, on ajoute donc le schéma suivant :\newline
+            DF$_{7}$ = \{\} et U$_{7}$ = \{adr\_resto, nom\_client, prenom\_client, nom\_menu, nom\_coursier, \newline prenom\_coursier, date\_course\}.\newline De plus, nous n'avons pas perdu d'information ni de dépendances fonctionnelles. Cette normalisation est donc \textbf{spi} et \textbf{spdf} où toutes les relations sont en \textbf{FN3}.
+            
+        \subsubsection *{Passage en FNBCK, Algorithme de Décomposition}
+            L'algorithme que nous allons utiliser ci-dessous se base sur une décomposition récursive de Df ne contenant pas de clé à gauche. Celle-ci donne à chaque fois deux sous-relations qu'on décompose à nouveau si elles ne sont pas en FNBC.\newline Par soucis de lisibilité, nous allons désigner chacun des Attributs par des lettres pour éviter que notre arbre de décomposition ne soit trop conséquent :
+            \bigskip
+            
+ 
+            \begin{tabular}{lll}
+                A = nom\_resto \\
+                B = type\_cuisine \\
+                C = adr\_resto \\
+                D = tel\_resto \\
+                E = ouvert\_dimanche \\
+                F = note\_resto \\
+                G = nom\_client \\
+                H = prenom\_client \\
+                I = tel\_client \\
+                J = adr\_client \\
+                K = nom\_menu \\
+                L = prix\_menu \\
+                M = nom\_coursier \\
+                N = prenom\_coursier \\
+                O = note\_coursier \\
+                P = date\_course \\
+                Q = mode\_deplacement \\
+            \end{tabular}
+            \hfill
+            \begin{tabular}{ll}
+                (1) & C $\rightarrow$ A,D,F \\
+                (2) & G,H $\rightarrow$ I,J \\
+                (3) & K $\rightarrow$ L,A \\
+                (4) & M,N $\rightarrow$ Q \\
+                (5) & M,N,P,K $\rightarrow$ O,F \\
+                (6) & A $\rightarrow$ B \\
+            \end{tabular}
+            \bigskip
+            
+            La représentation de l'arbre de décomposition se trouve sur la page suivante :\newpage
+                
+            \begin{landscape}
+                \thispagestyle{empty}
+                \vspace*{\stretch{1}}
+                \begin{tikzpicture}[sibling distance=20pt]
+                    \tikzset{level distance=90pt, every tree node/.style={align=left, anchor=east}}
+                    \Tree
+                    [.{U = \{A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q\} \\ DF = \{1, 2, 3, 4, 5, 6\}}
+                        {U$_{1}$ = \{C, A, D, E\}\\ DF$_{1}$ = \{1\}} %U1
+                        [.{U$_{2}$ = \{B, C, F, G, H, I, J, K, L, M, O, P, Q\}\\ DF$_{2}$ = \{2, 4, 5\}} %U2 
+                            {U$_{21}$ = \{G, H, I, J\}\\ DF$_{21}$ = \{2\}} %U21 
+                            [.{U$_{22}$ = \{B, C, F, G, H, K, L, M, N, O, P, Q\}\\ DF$_{22}$ = \{4, 5\}} %U22 
+                                {U$_{221}$ = \{M, N, P, K, O, F\}\\ DF$_{221}$ = \{5\}} %U221 
+                                [.{U$_{222}$ = \{B, C, G, H, K, L, M, N, P, Q\}\\ DF$_{222}$ = \{4\}} %U222 
+                                    {U$_{2221}$ = \{M, N, Q\}\\ DF$_{2221}$ = \{4\}} %U2221 
+                                    {U$_{2222}$ = \{B, C, G, H, K, L, M, N, P\}\\ DF$_{2222}$ = \{\}} %U2222 
+                                ]
+                            ]
+                        ]
+                    ]
+                \end{tikzpicture}
+                \vspace*{\stretch{1}}
+            \end{landscape}
+            \newpage
+            
+            Comme nous avons pu le voir avec le schéma ci-dessus, l'algorithme de normalisation par décomposition nous a donné 5 schémas.\bigskip
+            \begin{enumerate}
+                \item DF$_{1}$ = \{1\} et U$_{1}$ = \{adr\_resto, nom\_resto, tel\_resto, ouvert\_dimanche\}
+                \item DF$_{21}$ = \{2\} et U$_{21}$ = \{nom\_client, prenom\_client, tel\_client, adr\_client\}
+                \item DF$_{221}$ = \{5\} et U$_{221}$ = \{nom\_coursier, prenom\_coursier, date\_course, nom\_menu, \newline note\_coursier, note\_resto\}
+                \item DF$_{2221}$ = \{4\} et U$_{2221}$ = \{nom\_coursier, prenom\_coursier, mode\_deplacement\}
+                \item DF$_{2222}$ = \{\} et U$_{2222}$ = \{type\_cuisine, adr\_resto, nom\_client, prenom\_client, nom\_menu, prix\_menu, nom\_coursier, prenom\_coursier, date\_course\}\bigskip
+            \end{enumerate}
+            
+            \noindent
+            On peut remarquer que nous avons perdu 2 dépendances fonctionnelles au cours de la décomposition. Cette dernière est donc \textbf{uniquement spi} où toutes les relations sont en \textbf{FNBC}.
+            
+        \subsection*{Modèle Relationnel de la Base de Données}
+            Grâces aux différents schémas obtenus à l'aide de nos algorithmes de normalisation, nous pouvons en déduire le Modèle Relationnel suivant.\bigskip
+            
+            \begin{figure}[!h] %on ouvre l'environnement figure
+            \includegraphics[width = 15cm]{Image/Modele_Relationnel.png}
+            \caption{Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
+            \label{image_modele_relationnel}
+            \end{figure}
+            \newpage
+                
+        \begin{center}
+            \rule{12cm}{0.1pt}\\[10px] 
+            Suite du projet\\[5px]
+            \rule{12cm}{0.1pt}\\[10px]
+        \end{center}
+                
+                
+\end{document}
