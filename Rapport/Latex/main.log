@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.23)  23 FEB 2022 15:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.23)  3 MAR 2022 12:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -6,7 +6,12 @@ entering extended mode
 **"c:/Users/billa/Dropbox/PC/Documents/COURS/FAC/Info/L3/S2/Base de Données 2/DataBase-Project/Rapport/Latex/main.tex"
 (c:/Users/billa/Dropbox/PC/Documents/COURS/FAC/Info/L3/S2/Base de Données 2/DataBase-Project/Rapport/Latex/main.tex
 LaTeX2e <2021-11-15> patch level 1
-L3 programming layer <2022-02-21> (C:\Latex\tex/latex/base\article.cls
+L3 programming layer <2022-02-21> (C:\Latex\tex/latex/base\fix-cm.sty
+Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
+ (C:\Latex\tex/latex/base\ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
+)) (C:\Latex\tex/latex/base\article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
 (C:\Latex\tex/latex/base\size10.clo
 File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
@@ -552,9 +557,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 34.
+(Font)              <7> on input line 33.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 34.
+(Font)              <5> on input line 33.
  [1
 
 {C:/Users/billa/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3
@@ -563,26 +568,26 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 <Image/Modele_Relationnel.png, id=47, 842.14626pt x 810.02625pt>
 File: Image/Modele_Relationnel.png Graphic file (type png)
 <use Image/Modele_Relationnel.png>
-Package pdftex.def Info: Image/Modele_Relationnel.png  used on input line 151.
+Package pdftex.def Info: Image/Modele_Relationnel.png  used on input line 155.
 (pdftex.def)             Requested size: 426.79134pt x 410.51231pt.
  [4
 
- <./Image/Modele_Relationnel.png>] [5] (main.aux)
+] [5 <./Image/Modele_Relationnel.png>] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: EB59F1AAE607842788AB1A1312852310;124.
  ) 
 Here is how much of TeX's memory you used:
- 21794 strings out of 478584
- 401489 string characters out of 2861285
- 689900 words of memory out of 3000000
- 39598 multiletter control sequences out of 15000+600000
- 480108 words of font info for 48 fonts, out of 8000000 for 9000
+ 21947 strings out of 478584
+ 406677 string characters out of 2861285
+ 690202 words of memory out of 3000000
+ 39751 multiletter control sequences out of 15000+600000
+ 480886 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 115i,9n,118p,559b,913s stack positions out of 5000i,500n,10000p,200000b,80000s
- <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecxc1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk><C:/Latex/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Latex/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on main.pdf (5 pages, 201037 bytes).
+ 115i,9n,118p,734b,913s stack positions out of 5000i,500n,10000p,200000b,80000s
+ <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi650\ecbx0600.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecxc1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi720\ecbx1200.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\billa\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk><C:/Latex/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Latex/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on main.pdf (5 pages, 203374 bytes).
 PDF statistics:
- 337 PDF objects out of 1000 (max. 8388607)
- 26 named destinations out of 1000 (max. 500000)
+ 340 PDF objects out of 1000 (max. 8388607)
+ 21 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
