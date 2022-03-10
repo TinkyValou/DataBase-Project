@@ -147,13 +147,13 @@
         \subsection*{Modèle Relationnel de la Base de Données}
             Grâces à nos algorithmes de normalisation, nous avons pu trouver deux schémas différents. Nous allons maintenant essayer de déterminer lequel des deux schémas obtenu nous donne le résultat le plus cohérents (sens des relations) et le plus qualitatif (formes normales).\newline
             D'un côté, un schémas trouvé par l'algorithme de Bernstein est en \textbf{3\up{eme} Forme Normale} alors que celui obtenu par l'algorithme de décomposition est en \textbf{Forme Normale de Boyce-Codd}. Ce dernier étant un plus grand gage de qualité que le 3FN, nous allons donc le préférer.\newline
-            Cependant, lors que l'on regarde le shéma obtenu avec notre algorithme de décomposition, ce dernier n'est pas vraiment cohérent. En effet, l'attribut \emph{type de cuisine} est dans la relation qui contient les informations relatives à une commande alors qu'il serait plus logique qu'elle se rattache à celle correspondant au restaurant.\newline
+            Cependant, lors que l'on regarde le shéma obtenu avec notre algorithme de décomposition, ce dernier n'est pas vraiment cohérent. En effet, l'attribut \emph{type de cuisine} est dans la relation qui contient les informations relatives à une commande alors qu'il serait plus logique qu'elle se rattache à celle correspondant au restaurant.\bigskip
  
             \begin{figure}[ht] %on ouvre l'environnement figure
                 \centering
                 \includegraphics[scale = 0.7]{Image/modele_relationnel_1.png}
                 \caption{Premier Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
-                \label{image_modele_relationnel}
+                \label{image_modele_relationnel_1}
             \end{figure}
             \newpage
 
@@ -167,13 +167,13 @@
                 \item[$\bullet$] DF$_{22221}$ = \{5\} et U$_{22221}$ = \{nom\_coursier, prenom\_coursier, date\_course, nom\_menu, \newline note\_coursier, note\_resto\} 
                 \item[$\bullet$] DF$_{22222}$ = \{\} et U$_{22222}$ = \{adr\_resto, nom\_client, prenom\_client, nom\_menu, prix\_menu, nom\_coursier, prenom\_coursier, date\_course\}\bigskip
             \end{enumerate}
-            Le résultat est presque le même, à ceci prêt qu'un nouveaux schéma apparait, séparant le \emph{type\_cuisine} de la table Commande. On obtient de ce fait le modèle relationnel suivant:\newline
+            Le résultat est presque le même, à ceci prêt qu'un nouveaux schéma apparait, séparant le\newline \emph{type\_cuisine} de la table Commande. On obtient de ce fait le modèle relationnel suivant:\bigskip
 
             \begin{figure}[ht] %on ouvre l'environnement figure
                 \centering
                 \includegraphics[scale = 0.7]{Image/modele_relationnel_2.png}
                 \caption{Second Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
-                \label{image_modele_relationnel}
+                \label{image_modele_relationnel_2}
             \end{figure}
 
         \begin{center}
