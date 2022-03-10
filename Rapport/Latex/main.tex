@@ -25,7 +25,8 @@
 
 \section{Première partie}
     \subsection*{Présentation Générale}
-        Dans ce projet, l'objectif est de réaliser une base de données pas à pas. Pour ce faire, nous avons décidé de représenter la base de données d'un service de livraison de nourriture (Naofood, Deliveroo, ...). Nous avons donc défini ci-dessous un ensemble d'attributs permettant la gestion d'une telle organisation :\newline U = \{\emph{nom\_resto, type\_cuisine, adr\_resto, tel\_resto, ouvert\_dimanche, note\_resto, nom\_client, prenom\_client, tel\_client, adr\_client, nom\_menu, prix\_menu, nom\_coursier, prenom\_coursier, note\_coursier, date\_course, mode\_deplacement}\}.
+        Dans ce projet, l'objectif est de réaliser une base de données pas à pas. Pour ce faire, nous avons décidé de représenter la base de données d'un service de livraison de nourriture (Naofood, Deliveroo, ...). Nous avons donc défini ci-dessous un ensemble d'attributs permettant la gestion d'une telle organisation :\newline 
+        U = \{\emph{nom\_resto, type\_cuisine, adr\_resto, tel\_resto, ouvert\_dimanche, note\_resto, nom\_client, prenom\_client, tel\_client, adr\_client, nom\_menu, prix\_menu, nom\_coursier, prenom\_coursier, note\_coursier, date\_course, mode\_deplacement}\}.
         
 
     \subsection*{Table générale}
@@ -96,7 +97,7 @@
             \end{tabular}
             \hfill
             \begin{tabular}{ll}
-                (1) & C $\rightarrow$ A,D,F \\
+                (1) & C $\rightarrow$ A,D,E \\
                 (2) & G,H $\rightarrow$ I,J \\
                 (3) & K $\rightarrow$ L,A \\
                 (4) & M,N $\rightarrow$ Q \\
@@ -131,7 +132,7 @@
             \end{landscape}
             \newpage
             
-            Comme nous avons pu le voir avec le schéma ci-dessus, l'algorithme de normalisation par décomposition nous a donné 5 schémas.\bigskip
+            Comme nous avons pu le voir avec le schéma ci-dessus, l'algorithme de normalisation par décomposition nous a donné 5 schémas:\bigskip
             \begin{enumerate}
                 \item[$\bullet$] DF$_{1}$ = \{1\} et U$_{1}$ = \{adr\_resto, nom\_resto, tel\_resto, ouvert\_dimanche\}
                 \item[$\bullet$] DF$_{21}$ = \{2\} et U$_{21}$ = \{nom\_client, prenom\_client, tel\_client, adr\_client\}
@@ -144,25 +145,42 @@
             On peut remarquer que nous avons perdu 2 dépendances fonctionnelles au cours de la décomposition. Cette dernière est donc \textbf{uniquement spi} où toutes les relations sont en \textbf{FNBC}.
             
         \subsection*{Modèle Relationnel de la Base de Données}
-            Grâces à nos algorithmes de normalisation, nous avons pu trouver deux schémas différents. Nous n'allons maintenant essayer de déterminer lequel des deux schémas obtenu nous donne le résultat le plus cohérents (sens des relations) et le plus qualitatif (formes normales).\newline
+            Grâces à nos algorithmes de normalisation, nous avons pu trouver deux schémas différents. Nous allons maintenant essayer de déterminer lequel des deux schémas obtenu nous donne le résultat le plus cohérents (sens des relations) et le plus qualitatif (formes normales).\newline
             D'un côté, un schémas trouvé par l'algorithme de Bernstein est en \textbf{3\up{eme} Forme Normale} alors que celui obtenu par l'algorithme de décomposition est en \textbf{Forme Normale de Boyce-Codd}. Ce dernier étant un plus grand gage de qualité que le 3FN, nous allons donc le préférer.\newline
-            Cependant, lors que l'on regarde le shéma obtenu avec notre algorithme de décomposition, ce dernier n'est pas vraiment cohérent. En effet, l'attribut \emph{type de cuisine} est dans la relation qui contient les informations relatives à une commande alors qu'il serait plus logique qu'elle se rattache à celle correspondant au restaurant.\medskip
-
-            Nous allons donc essayer d'appliquer à nouveau l'agorithme de décomposition sur notre schéma initial mais avec des choix différents pour trouver un résultat plus satisfaisant. Dans cette décomposition, nous garderons les notations utilisées précédemment.
-            
-            
+            Cependant, lors que l'on regarde le shéma obtenu avec notre algorithme de décomposition, ce dernier n'est pas vraiment cohérent. En effet, l'attribut \emph{type de cuisine} est dans la relation qui contient les informations relatives à une commande alors qu'il serait plus logique qu'elle se rattache à celle correspondant au restaurant.\newline
+ 
             \begin{figure}[ht] %on ouvre l'environnement figure
-            \includegraphics[width = 15cm]{Image/Modele_Relationnel.png}
-            \caption{Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
-            \label{image_modele_relationnel}
+                \centering
+                \includegraphics[scale = 0.7]{Image/modele_relationnel_1.png}
+                \caption{Premier Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
+                \label{image_modele_relationnel}
             \end{figure}
             \newpage
-                
+
+            Nous allons donc essayer d'appliquer à nouveau l'agorithme de décomposition sur notre schéma initial mais avec des choix différents pour trouver un résultat plus satisfaisant. Dans cette décomposition, nous garderons les notations utilisées précédemment.\newline
+            Après une seconde décomposition dont on ne détaillera pas l'arbre, nous obtenons les schémas suivants:\bigskip
+            \begin{enumerate}
+                \item[$\bullet$] DF$_{1}$ = \{6\} et U$_{1}$ = \{nom\_resto, type\_cuisine\}
+                \item[$\bullet$] DF$_{21}$ = \{1\} et U$_{21}$ = \{adr\_resto, nom\_resto, tel\_resto, ouvert\_dimanche\}
+                \item[$\bullet$] DF$_{221}$ = \{2\} et U$_{221}$ = \{nom\_client, prenom\_client, tel\_client, adr\_client\}
+                \item[$\bullet$] DF$_{2221}$ = \{4\} et U$_{2221}$ = \{nom\_coursier, prenom\_coursier, mode\_deplacement\}
+                \item[$\bullet$] DF$_{22221}$ = \{5\} et U$_{22221}$ = \{nom\_coursier, prenom\_coursier, date\_course, nom\_menu, \newline note\_coursier, note\_resto\} 
+                \item[$\bullet$] DF$_{22222}$ = \{\} et U$_{22222}$ = \{adr\_resto, nom\_client, prenom\_client, nom\_menu, prix\_menu, nom\_coursier, prenom\_coursier, date\_course\}\bigskip
+            \end{enumerate}
+            Le résultat est presque le même, à ceci prêt qu'un nouveaux schéma apparait, séparant le \emph{type\_cuisine} de la table Commande. On obtient de ce fait le modèle relationnel suivant:\newline
+
+            \begin{figure}[ht] %on ouvre l'environnement figure
+                \centering
+                \includegraphics[scale = 0.7]{Image/modele_relationnel_2.png}
+                \caption{Second Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
+                \label{image_modele_relationnel}
+            \end{figure}
+
         \begin{center}
             \rule{12cm}{0.1pt}\\[10px] 
             Suite du projet\\[5px]
             \rule{12cm}{0.1pt}\\[10px]
         \end{center}
         
-                
+
 \end{document}
