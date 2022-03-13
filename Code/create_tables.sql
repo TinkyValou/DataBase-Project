@@ -2,20 +2,20 @@ prompt *************************************************************
 prompt ******************** DROP TABLE *****************************
 prompt *************************************************************
 
+DROP TABLE Specialite CASCADE CONSTRAINTS;
 DROP TABLE Restaurant CASCADE CONSTRAINTS;
 DROP TABLE Client CASCADE CONSTRAINTS;
 DROP TABLE Coursier CASCADE CONSTRAINTS;
 DROP TABLE Course CASCADE CONSTRAINTS;
 DROP TABLE Commande CASCADE CONSTRAINTS;
-DROP TABLE Specialite CASCADE CONSTRAINTS;
 
 prompt *************************************************************
 prompt ******************** CREATE TABLE ***************************
 prompt *************************************************************
 
 CREATE TABLE Specialite (
-    type_cuisine VARCHAR2(15),
     nom_resto VARCHAR2(50),
+    type_cuisine VARCHAR2(15),
             -- Ajout des clés primaires
     CONSTRAINT pk_specialite PRIMARY KEY(nom_resto)
             -- Ajout des clés étrangères
@@ -29,7 +29,7 @@ CREATE TABLE Restaurant (
             -- Ajout des clés primaires
     CONSTRAINT pk_restaurant PRIMARY KEY(adr_resto),
             -- Ajout des clés étrangères
-    CONSTRAINT fk_restaurant_specialite FOREIGN KEY(nom_resto) REFERENCES Specialite(nom_resto);
+    CONSTRAINT fk_restaurant_specialite FOREIGN KEY(nom_resto) REFERENCES Specialite(nom_resto)
 );
 
 CREATE TABLE Client (
@@ -69,11 +69,11 @@ CREATE TABLE Commande (
     adr_resto VARCHAR2(50),
     nom_client VARCHAR2(30),
     prenom_client VARCHAR2(10),
-    nom_menu VARCHAR2(20),
-    prix_menu NUMBER(2,2),
     nom_coursier VARCHAR2(30),
     prenom_coursier VARCHAR2(10),
     date_course DATE,
+    nom_menu VARCHAR2(20),
+    prix_menu NUMBER(4,2),
             -- Ajout des clés primaires
     CONSTRAINT pk_commande PRIMARY KEY(adr_resto, nom_client, prenom_client, nom_coursier, prenom_coursier, date_course),
             -- Ajout des clés étrangères
