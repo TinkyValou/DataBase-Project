@@ -9,6 +9,8 @@
 \usepackage{lscape}
 \usepackage{graphicx}
 
+\hypersetup{linkbordercolor = {1 1 1}}
+
 \date{\today}
 
 \title{Compte rendu projet Base de Données 2}
@@ -144,43 +146,54 @@
             \noindent
             On peut remarquer que nous avons perdu 2 dépendances fonctionnelles au cours de la décomposition. Cette dernière est donc \textbf{uniquement spi} où toutes les relations sont en \textbf{FNBC}.
             
-        \subsection*{Modèle Relationnel de la Base de Données}
-            Grâces à nos algorithmes de normalisation, nous avons pu trouver deux schémas différents. Nous allons maintenant essayer de déterminer lequel des deux schémas obtenu nous donne le résultat le plus cohérents (sens des relations) et le plus qualitatif (formes normales).\newline
-            D'un côté, un schémas trouvé par l'algorithme de Bernstein est en \textbf{3\up{eme} Forme Normale} alors que celui obtenu par l'algorithme de décomposition est en \textbf{Forme Normale de Boyce-Codd}. Ce dernier étant un plus grand gage de qualité que le 3FN, nous allons donc le préférer.\newline
-            Cependant, lors que l'on regarde le shéma obtenu avec notre algorithme de décomposition, ce dernier n'est pas vraiment cohérent. En effet, l'attribut \emph{type de cuisine} est dans la relation qui contient les informations relatives à une commande alors qu'il serait plus logique qu'elle se rattache à celle correspondant au restaurant.\newline
- 
-            \begin{figure}[ht] %on ouvre l'environnement figure
-                \centering
-                \includegraphics[scale = 0.7]{Image/modele_relationnel_1.png}
-                \caption{Premier Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
-                \label{image_modele_relationnel}
-            \end{figure}
-            \newpage
+    \subsection*{Modèle Relationnel de la Base de Données}
+        Grâces à nos algorithmes de normalisation, nous avons pu trouver deux schémas différents. Nous allons maintenant essayer de déterminer lequel des deux schémas obtenu nous donne le résultat le plus cohérents (sens des relations) et le plus qualitatif (formes normales).\newline
+        D'un côté, un schémas trouvé par l'algorithme de Bernstein est en \textbf{3\up{eme} Forme Normale} alors que celui obtenu par l'algorithme de décomposition est en \textbf{Forme Normale de Boyce-Codd}. Ce dernier étant un plus grand gage de qualité que le 3FN, nous allons donc le préférer.\newline
+        Cependant, lors que l'on regarde le shéma obtenu avec notre algorithme de décomposition, ce dernier n'est pas vraiment cohérent. En effet, l'attribut \emph{type de cuisine} est dans la relation qui contient les informations relatives à une commande alors qu'il serait plus logique qu'elle se rattache à celle correspondant au restaurant.\bigskip
 
-            Nous allons donc essayer d'appliquer à nouveau l'agorithme de décomposition sur notre schéma initial mais avec des choix différents pour trouver un résultat plus satisfaisant. Dans cette décomposition, nous garderons les notations utilisées précédemment.\newline
-            Après une seconde décomposition dont on ne détaillera pas l'arbre, nous obtenons les schémas suivants:\bigskip
-            \begin{enumerate}
-                \item[$\bullet$] DF$_{1}$ = \{6\} et U$_{1}$ = \{nom\_resto, type\_cuisine\}
-                \item[$\bullet$] DF$_{21}$ = \{1\} et U$_{21}$ = \{adr\_resto, nom\_resto, tel\_resto, ouvert\_dimanche\}
-                \item[$\bullet$] DF$_{221}$ = \{2\} et U$_{221}$ = \{nom\_client, prenom\_client, tel\_client, adr\_client\}
-                \item[$\bullet$] DF$_{2221}$ = \{4\} et U$_{2221}$ = \{nom\_coursier, prenom\_coursier, mode\_deplacement\}
-                \item[$\bullet$] DF$_{22221}$ = \{5\} et U$_{22221}$ = \{nom\_coursier, prenom\_coursier, date\_course, nom\_menu, \newline note\_coursier, note\_resto\} 
-                \item[$\bullet$] DF$_{22222}$ = \{\} et U$_{22222}$ = \{adr\_resto, nom\_client, prenom\_client, nom\_menu, prix\_menu, nom\_coursier, prenom\_coursier, date\_course\}\bigskip
-            \end{enumerate}
-            Le résultat est presque le même, à ceci prêt qu'un nouveaux schéma apparait, séparant le \emph{type\_cuisine} de la table Commande. On obtient de ce fait le modèle relationnel suivant:\newline
+        \begin{figure}[ht] %on ouvre l'environnement figure
+            \centering
+            \includegraphics[scale = 0.7]{Image/modele_relationnel_1.png}
+            \caption{Premier Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
+            \label{image_modele_relationnel_1}
+        \end{figure}
+        \newpage
 
-            \begin{figure}[ht] %on ouvre l'environnement figure
-                \centering
-                \includegraphics[scale = 0.7]{Image/modele_relationnel_2.png}
-                \caption{Second Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
-                \label{image_modele_relationnel}
-            \end{figure}
+        Nous allons donc essayer d'appliquer à nouveau l'agorithme de décomposition sur notre schéma initial mais avec des choix différents pour trouver un résultat plus satisfaisant. Dans cette décomposition, nous garderons les notations utilisées précédemment.\newline
+        Après une seconde décomposition dont on ne détaillera pas l'arbre, nous obtenons les schémas suivants:\bigskip
+        \begin{enumerate}
+            \item[$\bullet$] DF$_{1}$ = \{6\} et U$_{1}$ = \{nom\_resto, type\_cuisine\}
+            \item[$\bullet$] DF$_{21}$ = \{1\} et U$_{21}$ = \{adr\_resto, nom\_resto, tel\_resto, ouvert\_dimanche\}
+            \item[$\bullet$] DF$_{221}$ = \{2\} et U$_{221}$ = \{nom\_client, prenom\_client, tel\_client, adr\_client\}
+            \item[$\bullet$] DF$_{2221}$ = \{4\} et U$_{2221}$ = \{nom\_coursier, prenom\_coursier, mode\_deplacement\}
+            \item[$\bullet$] DF$_{22221}$ = \{5\} et U$_{22221}$ = \{nom\_coursier, prenom\_coursier, date\_course, nom\_menu, \newline note\_coursier, note\_resto\} 
+            \item[$\bullet$] DF$_{22222}$ = \{\} et U$_{22222}$ = \{adr\_resto, nom\_client, prenom\_client, nom\_menu, prix\_menu, nom\_coursier, prenom\_coursier, date\_course\}\bigskip
+        \end{enumerate}
+        Le résultat est presque le même, à ceci prêt qu'un nouveaux schéma apparait, séparant le\newline \emph{type\_cuisine} de la table Commande. On obtient de ce fait le modèle relationnel suivant:\bigskip
 
-        \begin{center}
-            \rule{12cm}{0.1pt}\\[10px] 
-            Suite du projet\\[5px]
-            \rule{12cm}{0.1pt}\\[10px]
-        \end{center}
+        \begin{figure}[ht] %on ouvre l'environnement figure
+            \centering
+            \includegraphics[scale = 0.7]{Image/modele_relationnel_2.png}
+            \caption{Second Modèle Relationnel de la Base de Données \emph{Service de Livraison de Nourriture}}
+            \label{image_modele_relationnel_2}
+        \end{figure}
+        \newpage
+
+\section{Seconde partie}
+        \subsection*{Création des tables}
+
+        \subsubsection*{Insertion des Tuples}
+            Nous avons repris la tuples que nous avions fait au tout début de notre projet que vous pouvez retourver sur notre \href{https://docs.google.com/spreadsheets/d/1HeSNFvLN3-yMfWHoYLVumzOeQpHXJHynqVBusbvl6EQ/edit?usp=sharing}{\underline{Google Sheet}}. Nous les avons simplement adaptés pour qu'ils s'insèrent dans les tables créer précédemment.\newline
+            Nous avons cependant rencontré un problème concernant notre attribut \textit{date\_course}. Il correspond donc à la date de la courses mais aussi à son heure (pour qu'un même coursier puisse faire plusieurs courses en une seule journée). Cependant, malgré ce qu'on peut trouver dans la document d'Oracle, le type DATETIME n'est pas reconnu pour notre base de données. Nous avons donc du recourrir à la fonction to\_date pour pouvoir garder le type DATE tout en évitant les erreurs dues aux contraintes d'intégrités. Cependant, l'affichage dans sqlplus ne prend pas en compte les heures de notre attribut \textit{date\_course}.
+
+            \subsubsection*{Creation d'indexe}
+                Nous avons choisi de créer un indexe sur les attributs \textit{mon\_menu} et textit{prix\_menu} de la table Commande. Ce choix nous semble jusdicieux car cette table sera la plus utilisé avec la table Courses (à chaque nouvelle commande, ce qui est le plus fréquent, un nouveau tuple de cette table est créé). De plus, elle ne sera pas modifiée. Lorsqu'une commande est effectuée, on veut soit regarder les informations qu'elle contient, soit la supprimer si elle est erronnée mais une fois la commande passée, on ne peut pas la modifier.  
+
+        \subsection*{Utilisation du PLSQL et des Vues}
+
+        \subsection*{Gestion des droits}
+
+        
         
 
 \end{document}
