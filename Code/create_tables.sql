@@ -57,8 +57,8 @@ CREATE TABLE Course (
     prenom_coursier VARCHAR2(10),
     date_course DATE,
     nom_menu VARCHAR2(30),
-    note_coursier NUMBER(1),
-    note_resto NUMBER(1),
+    note_coursier NUMBER(2,1),
+    note_resto NUMBER(2,1),
             -- Ajout des clés primaires
     CONSTRAINT pk_course PRIMARY KEY(nom_coursier, prenom_coursier, date_course),
             -- Ajout des clés étrangères
