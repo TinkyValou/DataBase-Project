@@ -182,12 +182,16 @@
 \section{Seconde partie}
         \subsection*{Création des tables}
 
-        \subsubsection*{Insertion des Tuples}
-            Nous avons repris la tuples que nous avions fait au tout début de notre projet que vous pouvez retourver sur notre \href{https://docs.google.com/spreadsheets/d/1HeSNFvLN3-yMfWHoYLVumzOeQpHXJHynqVBusbvl6EQ/edit?usp=sharing}{\underline{Google Sheet}}. Nous les avons simplement adaptés pour qu'ils s'insèrent dans les tables créées précédemment.\newline
-            Nous avons cependant rencontré un problème concernant notre attribut \textit{date\_course}. Il correspond donc à la date de la course mais aussi à son heure (pour qu'un même coursier puisse faire plusieurs courses en une seule journée). Cependant, malgré ce qu'on peut trouver dans la document d'Oracle, le type DATETIME n'est pas reconnu pour notre base de données. Nous avons donc du recourrir à la fonction to\_date pour pouvoir garder le type DATE tout en évitant les erreurs dues aux contraintes d'intégrités. Cependant, l'affichage dans \emph{sqlplus} ne prend pas en compte les heures de notre attribut \textit{date\_course}.
 
-            \subsubsection*{Creation d'indexe}
-                Nous avons choisi de créer un indexe sur les attributs \textit{mon\_menu} et \textit{prix\_menu} de la table Commande. Ce choix nous semble être le plus judicieux car cette table sera la plus utilisée avec la table Courses (à chaque nouvelle commande, ce qui est le plus fréquent, un nouveau tuple de cette table est créé). De plus, elle ne sera pas modifiée. Lorsqu'une commande est effectuée, on veut soit regarder les informations qu'elle contient, soit la supprimer si elle est erronnée mais une fois la commande passée, on ne peut pas la modifier.
+        \subsubsection*{Creation d'indexe}
+        Nous avons choisi de créer un indexe sur les attributs \textit{mon\_menu} et textit{prix\_menu} de la table Commande. Ce choix nous semble jusdicieux car cette table sera la plus utilisé avec la table Courses (à chaque nouvelle commande, ce qui est le plus fréquent, un nouveau tuple de cette table est créé). De plus, elle ne sera pas modifiée. Lorsqu'une commande est effectuée, on veut soit regarder les informations qu'elle contient, soit la supprimer si elle est erronnée mais une fois la commande passée, on ne peut pas la modifier. 
+            
+        \subsubsection*{Création de séquence}
+            Une séquence est un objet de Base de Donnée qui permet de générer des numéros séquentiels (qui peuvent notamment être utilisés pour créer des clés primaires uniques de manière automatique). Dans notre base de donné, nous n'avons pas besoin d'identifiants dans nos tables. Nous allons alors créer une séquence spécifique à notre table \textit{Commande} qui nous permettra de compter le nombre de commande qui ont été passées depuis la création de notre BD.
+
+        \subsubsection*{Insertion des Tuples}
+            Nous avons repris la tuples que nous avions fait au tout début de notre projet que vous pouvez retourver sur notre \href{https://docs.google.com/spreadsheets/d/1HeSNFvLN3-yMfWHoYLVumzOeQpHXJHynqVBusbvl6EQ/edit?usp=sharing}{\underline{Google Sheet}}. Nous les avons simplement adaptés pour qu'ils s'insèrent dans les tables créer précédemment.\newline
+            Nous avons cependant rencontré un problème concernant notre attribut \textit{date\_course}. Il correspond donc à la date de la courses mais aussi à son heure (pour qu'un même coursier puisse faire plusieurs courses en une seule journée). Cependant, malgré ce qu'on peut trouver dans la document d'Oracle, le type DATETIME n'est pas reconnu pour notre base de données. Nous avons donc du recourrir à la fonction to\_date pour pouvoir garder le type DATE tout en évitant les erreurs dues aux contraintes d'intégrités. Cependant, l'affichage dans sqlplus ne prend pas en compte les heures de notre attribut \textit{date\_course}. 
 
         \subsection*{Utilisation du PLSQL et des Vues}
 
