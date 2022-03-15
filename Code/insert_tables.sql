@@ -70,13 +70,24 @@ prompt ************* INSERT TUPLES INTO COMMANDE *******************
 prompt *************************************************************
 
 INSERT INTO Commande VALUES('23 Rue des Carmes', 'Goubon', 'Valentin', 'Billaud', 'Mael', TO_DATE('2021-DEC-30 22:30','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Yellow Curry', 10);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('6 Rue Beauregard', 'Johan', 'Quentin', 'Bureau', 'Arthur', TO_DATE('2021-DEC-30 19:45','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Croque de la semaine', 7.9);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('95 Boulevard Gabriel Lauriol', 'Legrand', 'Julien', 'Legrand', 'Philippe', TO_DATE('2021-DEC-30 19:30','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Munich Machine', 13.5);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('11 Rue de la Juiverie', 'Lambert', 'Laurine', 'de Vengerberg', 'Yennefer', TO_DATE('2021-DEC-30 22:00','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Poulet Tikka Massala', 11.9);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('3 Rue Leon Maître', 'Lambert', 'Geralt', 'Legrand', 'Philippe', TO_DATE('2021-DEC-30 20:30','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Chicken Thaï', 10);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('27 Rue Adolphe Moitie', 'Goubon', 'Valentin', 'Billaud', 'Mael', TO_DATE('2021-DEC-30 21:30','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Risotto Tameggio', 16.5);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('6 Rue Beauregard', 'Lambert', 'Geralt', 'de Vengerberg', 'Yennefer', TO_DATE('2021-DEC-30 20:30','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Georges', 10.9);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('27 Rue Adolphe Moitie', 'Goubon', 'Valentin', 'Billaud', 'Mael', TO_DATE('2021-DEC-30 19:30','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Filet de Thon Germon', 18);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('95 Boulevard Gabriel Lauriol', 'Legrand', 'Julien', 'Bureau', 'Arthur', TO_DATE('2021-DEC-30 20:45','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Mein Favorit', 13.1);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('3 Rue Leon Maître', 'Goubon', 'Valentin', 'de Vengerberg', 'Yennefer', TO_DATE('2021-DEC-30 20:30','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Yellow Curry', 10);
+SELECT number_of_commande.nextval FROM dual;
 INSERT INTO Commande VALUES('11 Rue de la Juiverie', 'Johan', 'Quentin', 'de Vengerberg', 'Yennefer', TO_DATE('2021-DEC-30 19:15','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Poulet Tandoori', 12);
+SELECT number_of_commande.nextval FROM dual;
