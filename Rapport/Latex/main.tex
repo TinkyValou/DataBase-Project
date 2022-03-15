@@ -169,7 +169,8 @@
             \item[$\bullet$] DF$_{22221}$ = \{5\} et U$_{22221}$ = \{nom\_coursier, prenom\_coursier, date\_course, nom\_menu, \newline note\_coursier, note\_resto\} 
             \item[$\bullet$] DF$_{22222}$ = \{\} et U$_{22222}$ = \{adr\_resto, nom\_client, prenom\_client, nom\_menu, prix\_menu, nom\_coursier, prenom\_coursier, date\_course\}\bigskip
         \end{enumerate}
-        Le résultat est presque le même, à ceci prêt qu'un nouveaux schéma apparait, séparant le \emph{type\_cuisine} de la table Commande. On obtient de ce fait le modèle relationnel suivant:\bigskip
+        Le résultat est presque le même, à ceci prêt qu'un nouveaux schéma apparait, séparant le \newline 
+        \emph{type\_cuisine} de la table Commande. On obtient de ce fait le modèle relationnel suivant:\bigskip
 
         \begin{figure}[ht] %on ouvre l'environnement figure
             \centering
@@ -195,9 +196,50 @@
 
         \subsection*{Utilisation du PLSQL et des Vues}
 
+            \subsubsection*{Triggers}
+                BLABLABLABLABLABLABLABLA
+            
+            \subsubsection*{Fonctions et Procédures}
+            BLABLABLABLABLABLABLABLA
+            
+            \subsubsection*{Vues}
+            BLABLABLABLABLABLABLABLA
+
         \subsection*{Gestion des droits}
+            \subsubsection*{Création des rôles}
+                Pour la création des rôles, nous avons essayer de nous rapprocher au plus de ce qui, selons nous, était l'organisation d'un vrai service de livraison de nourriture (simplifié bien entendu).
+                Nous avons donc créé des rôles pour : 
+                \begin{itemize}
+                    \item un administrateur de la Base de Donnée (\textit{DB\_admin})
+                    \item un directeur du service (\textit{CEO})
+                    \item les coursiers (\textit{Coursier})
+                    \item les restaurants (\textit{Restaurateur})
+                    \item les clients (\textit{Client})
+                \end{itemize}
+            
+            \subsubsection*{Attribution des droits aux rôles}
+                Concernant l'attribution des droits aux rôles, nous avons réfléchis de la manière suivante : Qu'est ce que chaque acteur de notre Bases de Données doit pouvoir faire et ne doit pas pouvoir faire ?
 
-        
-        
+                \begin{description}
+                    \item[$\bullet$]Le Client\newline
+                     Il doit pouvoir regarder les différents restaurants ainsi que leurs type de nourriture pour pouvoir choisir sa commande. Il doit également pouvoir s'enregistrer en tant que client (mais aussi modifier son compte )et effectuer une commande (ou la modifier si il veut changer de menu). Par la suite, nous considèrerons que des qu'un rôle permetra d'insérer des tuples dans une table, il permetra également de modifier les tuples insérés.
 
+                    \item[$\bullet$]Le Restaurateur\newline
+                     Il doit pouvoir avoir accès au informations concernant les commande pour pouvoir les effectuer. Mais aussi s'enregistrer en tant que restaurant et renseigner sa spécialité.
+
+                    \item[$\bullet$]Le Coursier\newline
+                     Il doit pouvoir vérifier les données concerannt sa commande, mais aussi celles du Client pour connaître son adresse ou encore son numéro de téléphone. Il doit également pouvoir s'enregistrer en tant que coursier.
+
+                    \item[$\bullet$]Le CEO\newline
+                     Il doit pour avoir accès à toute les informations de la base de données mais aussi pouvoir ajouter ou modifier des données en fonction des besoins de son entreprise. 
+
+                    \item[$\bullet$]L'administrateur de la Base de Données\newline
+                     Ce dernier doit pourvoir agencer pleinement la base de données. Nous allons donc lui donner tous les privilèges.  
+                \end{description}
+
+                Ces deux derniers rôle représentent un potentiel danger pour la base de donnée de part leur grand permissibilité. Nous avons donc décider de les protéger par des mots de passe.\newline
+                Comme chacun des rôles est très spécifique, nous n'avons cependant pas pu mettre en place la notion d'héritage.
+
+            \subsubsection*{Attribution des rôles aux utilisateurs}
+                Pour l'attribution des rôles aux utilisateurs, chaque memebre du groupe s'est vu assigner un rôle différent. Comme nous sommes peu comparé au nombre d'utilisateurs que pourrait acceuillir une véritable base de donnée d'un service de livraiso de nourriture, nous n'avons pas pu former de groupe d'utilisateurs.
 \end{document}
