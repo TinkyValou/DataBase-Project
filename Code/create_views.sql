@@ -20,8 +20,9 @@ CREATE VIEW view_client_command AS
 WITH CHECK OPTION;
 
 
--- Cette vue permet de regarder les commandes restaurant de regarder ses commandes (sans l'adresse ni le prénom des clients, par mesure de sécurité et de respect de la vie privée), la fiche de ses clients
+-- Cette vue permet de regarder les commandes d'un restaurant (sans l'adresse ni le prénom des clients, par mesure de sécurité et de respect de la vie privée)
 CREATE VIEW view_resto AS 
     SELECT nom_resto, nom_client, nom_coursier, prenom_coursier, date_course, nom_menu
     FROM Restaurant NATURAL JOIN Commande
+    WHERE (nom_resto = '&nom_resto')
 WITH CHECK OPTION;
