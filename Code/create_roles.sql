@@ -29,19 +29,18 @@ GRANT INSERT, UPDATE ON Commande TO C##Client;
 
 
 prompt *************************************************************
-prompt **************** PRIVILEGE TO RESTAURANT ********************
+prompt *************** PRIVILEGE TO RESTAURATEUR *******************
 prompt *************************************************************
 
+GRANT SELECT ON Commande TO C#Restaurateur;
 GRANT INSERT, UPDATE ON Specialite TO C#Restaurateur;
 GRANT INSERT, UPDATE ON Restaurant TO C#Restaurateur;
-GRANT SELECT ON Commande TO C#Restaurateur;
 
 prompt *************************************************************
 prompt ***************** PRIVILEGE TO COURSIER *********************
 prompt *************************************************************
 
-GRANT SELECT ON Restaurant TO C##Coursier;
-GRANT SELECT ON Course TO C##Coursier;
+GRANT SELECT ON CLient TO C##Coursier;
 GRANT SELECT ON Commande TO C##Coursier;
 GRANT INSERT, UPDATE ON Coursier TO C##Coursier;
 
@@ -79,18 +78,11 @@ CREATE USER C##L3_2;
 GRANT C##Coursier TO C##L3_2;
 
 CREATE USER C##L3_6;
-<<<<<<< Updated upstream
-GRANT C##CEO TO C##L3_2;
-=======
 GRANT C##Client TO C##L3_6;
->>>>>>> Stashed changes
 
 CREATE USER C##L3_7;
 GRANT C##DB_admin TO C##L3_7;
 
 CREATE USER C##L3_11;
-<<<<<<< Updated upstream
-GRANT C##Client TO C##L3_2;
-=======
 GRANT C##CEO TO C##L3_11;
->>>>>>> Stashed changes
+
