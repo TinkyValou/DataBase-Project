@@ -79,10 +79,18 @@ CREATE USER C##L3_2;
 GRANT C##Coursier TO C##L3_2;
 
 CREATE USER C##L3_6;
+<<<<<<< Updated upstream
 GRANT C##CEO TO C##L3_2;
+=======
+GRANT C##Client TO C##L3_6;
+>>>>>>> Stashed changes
 
 CREATE USER C##L3_7;
-GRANT C##DB_admin TO C##L3_2;
+GRANT C##DB_admin TO C##L3_7;
 
 CREATE USER C##L3_11;
+<<<<<<< Updated upstream
 GRANT C##Client TO C##L3_2;
+=======
+GRANT C##CEO TO C##L3_11;
+>>>>>>> Stashed changes
