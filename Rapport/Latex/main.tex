@@ -180,7 +180,7 @@
         \end{figure}
         \newpage
 
-\section{Seconde partie}
+    \section{Deuxième partie}
         \subsection*{Création des tables}
 
 
@@ -197,16 +197,23 @@
         \subsection*{Utilisation du PLSQL et des Vues}
 
             \subsubsection*{Triggers}
-                BLABLABLABLABLABLABLABLA
+            Un trigger, ou déclencheur, est un objet de base de données permettant de réaliser une opération SQL avant ou après un évènement tel qu'une insertion, une mise à jour, ou une suppression de tuple. Cet objet est très pratique pour automatiser des comportements et s'assurer que la base de donnée se comporte comme on le souhaite.\newline
+            Nous avons ajouté deux triggers, l'un pour répondre à une certaine contrainte, et l'autre pour automatiser la séquence que nous avons défini précédemment.
+            Dans notre base de donnée, nous identifions nos clients et nos coursiers à l'aide de leurs noms et prénoms. Par ce fait, on suppose qu'une combinaison d'un nom et d'un prénom identifie donc une seule et unique personne. Il y a alors une situation que l'on veut éviter : qu'un client soit le coursier pour sa propre commande. Pour cela, nous avons créé un trigger qui se déclenche avant l'insertion d'un tuple dans la table Commande. On vérifie si le nom et le prénom du client sont les mêmes que celui du coursier, et si c'est le cas, une exception est levée et l'insertion du tuple concernée est annulée.
+            Le deuxième trigger se déclenche lui aussi avant l'insertion d'un tuple dans la table Commande. Il sert à incrémenter notre séquence qui nous permet de compter le nombre de tuples dans la table Commande depuis la création de celle-ci.\newpage
             
             \subsubsection*{Fonctions et Procédures}
-            La fonction permet, lorsque l'utilisateur rentre un nom et un prénom d'un client, de pouvoir quantifier le nombre de commandes du client.
-            Cette fonction retourne par la même occasion une exception si le client est inexistant (la fonction est bien séparée afin de distinguer le client qui n'existe pas du client qui n'a jamais commandé mais qui existe dans la Bases de Données).
+            Notre fonction permet, lorsque l'utilisateur rentre le nom et prénom d'un client, de pouvoir quantifier le nombre de commandes de ce dernier.
+            Elle retourne par la même occasion une exception si le client est inexistant (la fonction est bien séparée afin de distinguer le client qui n'existe pas du client qui n'a jamais commandé mais qui existe dans la Bases de Données).\medskip
+
+            Nous avons également créé une procédure permettant de récupérer les revenus actuels d'un restaurant en renseignant son adresse en paramètre. Le résultat est ensuite affiché dans le terminal. Une exception est levée quand le restaurant ne se trouve pas encore dans la table Commande, le revenu affiché est alors de 0. Cela permet de suivre l'évolution des revenus à la demande au fur et à mesure d'ajout de tuple dans la base de donnée.
             
             \subsubsection*{Vues}
-            On suppose que l'utilisateur ne connait que ses données et donc ne pourra pas avoir la vue d'un autre utilisateur.\newline
-            La première vue permet, lorsque l'utilisateur rentre un nom et un prénom d'un client, de pouvoir voir ses commandes effectués.
-            La deuxième vue permet aux restaurants de pouvoir regarder quelles sont ses commandes.
+            Pour la création de nos vues, on souhaite que l'utilisateur ne connaisse que ses données et donc qu'il ne puisse pas voir les informations relatives à un autre utilisateur.
+            \begin{itemize}
+                \item La première vue permet, lorsque l'utilisateur rentre le nom et prénom d'un client, de voir les commandes qu'il a effectué.
+                \item La seconde permet aux restaurants de regarder quelles sont ses commandes.
+            \end{itemize}
 
         \subsection*{Gestion des droits}
             \subsubsection*{Création des rôles}
@@ -245,4 +252,7 @@
 
             \subsubsection*{Attribution des rôles aux utilisateurs}
                 Pour l'attribution des rôles aux utilisateurs, chaque memebre du groupe s'est vu assigner un rôle différent. Comme nous sommes peu comparé au nombre d'utilisateurs que pourrait acceuillir une véritable base de donnée d'un service de livraiso de nourriture, nous n'avons pas pu former de groupe d'utilisateurs.
+
+    \section{Conclusion}
+        
 \end{document}
