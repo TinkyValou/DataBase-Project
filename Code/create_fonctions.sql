@@ -1,9 +1,11 @@
+SET SERVEROUTPUT ON
+
 -- Cette fonction permet de renvoyer, dans le cas où l'utilisateur existe, son nombre de commandes
 CREATE OR REPLACE FUNCTION nb_commandes(n_client VARCHAR2, p_client VARCHAR2 )
     RETURN NUMBER IS nb_p NUMBER;
 BEGIN
     SELECT COUNT(*) INTO nb_p FROM Commande 
-    WHERE (nom_client = n_client)AND(prenom_client = p_client);
+    WHERE (nom_client = n_client)AND(prenom_client = p_client); 
     IF (nb_p IS NULL) THEN
         SELECT COUNT(*) INTO nb_p FROM Client 
         WHERE (nom_client = n_client)AND(prenom_client = p_client);
@@ -16,7 +18,7 @@ END nb_commandes;
 /
 
 -- Cette procédure permet de calculer les revenus d'un restaurant à partir de son adresse en fonction des tuples enregistrés dans la table Commande.
-SET SERVEROUTPUT ON
+
 CREATE OR REPLACE PROCEDURE calc_revenu_restau (adr_restau IN Restaurant.adr_resto%type) IS
 revenu_restau NUMBER(4,2) := 0;
 BEGIN

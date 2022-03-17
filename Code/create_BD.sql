@@ -8,6 +8,8 @@
 
 @create_sequence;
 
+@create_triggers;
+
 @insert_tables;
 
 @create_roles;

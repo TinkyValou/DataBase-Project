@@ -1,4 +1,19 @@
 prompt *************************************************************
+prompt ***************** DROP ALL CONSTRAINTS **********************
+prompt *************************************************************
+
+ALTER TABLE Restaurant DROP CONSTRAINT tel_resto_number;
+ALTER TABLE Restaurant DROP CONSTRAINT adr_resto_adr;
+ALTER TABLE Restaurant DROP CONSTRAINT ouvert_dimanche_bool;
+ALTER TABLE Client DROP CONSTRAINT tel_client_number;
+ALTER TABLE Client DROP CONSTRAINT adr_client_adr;
+ALTER TABLE Coursier DROP CONSTRAINT mode_dep_accepted;
+ALTER TABLE Course DROP CONSTRAINT note_resto_range;
+ALTER TABLE Course DROP CONSTRAINT note_coursier_range;
+
+
+
+prompt *************************************************************
 prompt **************** ALTER TABLE Restaurant *********************
 prompt *************************************************************
 
@@ -14,10 +29,6 @@ ALTER TABLE Client ADD CONSTRAINT tel_client_number CHECK (REGEXP_LIKE (tel_clie
 ALTER TABLE Client ADD CONSTRAINT adr_client_adr CHECK (REGEXP_LIKE (adr_client, '^\d{1,}\D*'));
 
 prompt *************************************************************
-prompt **************** ALTER TABLE Commande ***********************
-prompt *************************************************************
-
-prompt *************************************************************
 prompt ****************** ALTER TABLE Coursier *********************
 prompt *************************************************************
 
@@ -27,9 +38,5 @@ prompt *************************************************************
 prompt ******************* ALTER TABLE Course **********************
 prompt *************************************************************
 
-ALTER TABLE Course ADD CONSTRAINT note_resto_range CHECK ((note_resto <= 5) && (note_resto >= 0));
-ALTER TABLE Course ADD CONSTRAINT note_coursier_range CHECK ((note_coursier <= 5) && (note_coursier >= 0));
-
-prompt *************************************************************
-prompt **************** ALTER TABLE Spécialité *********************
-prompt *************************************************************
+ALTER TABLE Course ADD CONSTRAINT note_resto_range CHECK ((note_resto <= 5) AND (note_resto >= 0));
+ALTER TABLE Course ADD CONSTRAINT note_coursier_range CHECK ((note_coursier <= 5) AND (note_coursier >= 0));

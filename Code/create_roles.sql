@@ -5,7 +5,7 @@ prompt *************************************************************
 DROP ROLE C##DB_admin;
 DROP ROLE C##CEO;
 DROP ROLE C##Coursier;
-DROP ROLE C#Restaurateur;
+DROP ROLE C##Restaurateur;
 DROP ROLE C##Client;
 
 prompt *************************************************************
@@ -15,7 +15,7 @@ prompt *************************************************************
 CREATE ROLE C##DB_admin IDENTIFIED BY DB_admin;
 CREATE ROLE C##CEO IDENTIFIED BY CEO;
 CREATE ROLE C##Coursier;
-CREATE ROLE C#Restaurateur;
+CREATE ROLE C##Restaurateur;
 CREATE ROLE C##Client;
 
 prompt *************************************************************
@@ -32,9 +32,9 @@ prompt *************************************************************
 prompt *************** PRIVILEGE TO RESTAURATEUR *******************
 prompt *************************************************************
 
-GRANT SELECT ON Commande TO C#Restaurateur;
-GRANT INSERT, UPDATE ON Specialite TO C#Restaurateur;
-GRANT INSERT, UPDATE ON Restaurant TO C#Restaurateur;
+GRANT SELECT ON Commande TO C##Restaurateur;
+GRANT INSERT, UPDATE ON Specialite TO C##Restaurateur;
+GRANT INSERT, UPDATE ON Restaurant TO C##Restaurateur;
 
 prompt *************************************************************
 prompt ***************** PRIVILEGE TO COURSIER *********************
@@ -85,4 +85,3 @@ GRANT C##DB_admin TO C##L3_7;
 
 CREATE USER C##L3_11;
 GRANT C##CEO TO C##L3_11;
-
