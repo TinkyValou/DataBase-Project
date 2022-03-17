@@ -42,7 +42,7 @@ prompt *************************************************************
 prompt ***************** PRIVILEGE TO COURSIER *********************
 prompt *************************************************************
 
-GRANT SELECT ON CLient TO Coursier;
+GRANT SELECT ON Client TO Coursier;
 GRANT SELECT ON Commande TO Coursier;
 GRANT INSERT, UPDATE ON Coursier TO Coursier;
 
@@ -116,7 +116,7 @@ prompt *************************************************************
 prompt ***************** PRIVILEGE TO COURSIER *********************
 prompt *************************************************************
 
-GRANT SELECT ON CLient TO C##Coursier;
+GRANT SELECT ON Client TO C##Coursier;
 GRANT SELECT ON Commande TO C##Coursier;
 GRANT INSERT, UPDATE ON Coursier TO C##Coursier;
 
