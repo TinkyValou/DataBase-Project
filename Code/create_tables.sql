@@ -18,7 +18,6 @@ CREATE TABLE Specialite (
     type_cuisine VARCHAR2(15),
             -- Ajout des clés primaires
     CONSTRAINT pk_specialite PRIMARY KEY(nom_resto)
-            -- Ajout des clés étrangères
 );
 
 CREATE TABLE Restaurant (
@@ -39,8 +38,6 @@ CREATE TABLE Client (
     adr_client VARCHAR2(50),
             -- Ajout des clés primaires
     CONSTRAINT pk_client PRIMARY KEY(nom_client, prenom_client)
-            -- Ajout des clés étrangères
-    --CONSTRAINT tel_client_number CHECK (tel_client ~ (0\d{9}))
 );
 
 CREATE TABLE Coursier (

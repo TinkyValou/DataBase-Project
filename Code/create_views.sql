@@ -16,7 +16,7 @@ prompt Select the last name and the first name of the customer
 CREATE VIEW view_client_command AS 
     SELECT *
     FROM Commande NATURAL JOIN Client 
-    WHERE (nom_client = '&nom_client')AND(prenom_client = '&prenom_client')
+    WHERE ((nom_client = '&nom_client') AND (prenom_client = '&prenom_client'))
 WITH CHECK OPTION;
 
 
