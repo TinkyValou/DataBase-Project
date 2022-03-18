@@ -204,7 +204,7 @@
             Un trigger, ou déclencheur, est un objet de base de données permettant de réaliser une opération SQL avant ou après un événement tel qu'une insertion, une mise à jour, ou une suppression de tuple. Cet objet est très pratique pour automatiser des comportements et s'assurer que la base de données se comporte comme on le souhaite.\newline
             Nous avons ajouté deux triggers, l'un pour répondre à une certaine contrainte, et l'autre pour automatiser la séquence que nous avons défini précédemment.\newline
             Dans notre base de données, nous identifions nos clients et nos coursiers à l'aide de leurs noms et prénoms. Par ce fait, on suppose qu'une combinaison d'un nom et d'un prénom identifie donc une seule et unique personne. Il y a alors une situation que l'on veut éviter : qu'un client soit le coursier pour sa propre commande. Pour cela, nous avons créé un trigger qui se déclenche avant l'insertion d'un tuple dans la table Commande. On vérifie si le nom et le prénom du client sont les mêmes que celui du coursier, et si c'est le cas, une exception est levée et l'insertion du tuple concernée est annulée.\newline
-            Le deuxième trigger se déclenche lui aussi avant l'insertion d'un tuple dans la table Commande. Il sert à incrémenter notre séquence qui nous permet de compter le nombre de tuples dans la table Commande depuis la création de celle-ci.\newline
+            Le deuxième trigger se déclenche lui aussi avant l'insertion d'un tuple dans la table Commande. Il sert à incrémenter notre séquence qui nous permet de compter le nombre de tuples dans la table Commande depuis la création de celle-ci.
             
             \subsubsection*{Fonctions et Procédures}
             Notre fonction permet, lorsque l'utilisateur rentre le nom et prénom d'un client, de pouvoir quantifier le nombre de commandes de ce dernier.
@@ -257,6 +257,25 @@
             \subsubsection*{Attribution des rôles aux utilisateurs}
                 Pour l'attribution des rôles aux utilisateurs, chaque membre du groupe s'est vu assigner un rôle différent. Comme nous sommes peu comparé au nombre d'utilisateurs que pourrait accueillir une véritable base de données d'un service de livraison de nourriture, nous n'avons pas pu former de groupe d'utilisateurs.
 
+    \section{Utilisation de nos fichiers SQL}
+
+        Concernant les fichiers .sql que nous avons dans notre rapport, ils sont organisés comme suit :
+        \begin{itemize}
+            \item Nous avons créé un fichier pour l'ajout de chaque objet à notre base de données. 
+            \begin{itemize}
+                \item create\_tables.sql pour créer les tables.
+                \item alter\_tables.sql pour ajouter les contraintes sur les attributs de nos tables.
+                \item create\_sequence.sql pour créer notre séquence.
+                \item index\_tables.sql pour indexer les attributs de nos tables.
+                \item create\_triggers.sql pour créer nos triggers.
+                \item create\_functions.sql pour créer nos fonctions et procédures.
+                \item create\_roles.sql pour ajouter des rôles à notre base de données, leur attribuers des privilèges et enfin attribuer ces rôles à des utilisateurs.
+                \item create\_views.sql pour ajouter des vues sur nos tables.
+            \end{itemize}
+            \item Nous avons également créé trois fichiers pour pouvoir tester respectivement les \textit{contraintes} (test\_contraintes.sql), les \textit{procedures} (test\_procedures.sql) et les \textit{triggers} (test\_triggers.sql).
+            \item Pour éviter d'avoir à lancer (ou relancer) tous les fichiers indépendament, nous avons également créet le fichier projet.sql qui nous permet de lancer tous les fichiers précédemment cités en une seule fois.
+        \end{itemize} 
+
     \section{Conclusion}
         Ce projet nous aura permis de nous rendre compte de ce à quoi pourrait ressembler une réelle base de données. Que ce soit la rechercher préliminaire des dépendances fonctionnelles de nos différents attributs, à l'implémentation des objets permettant la maintenance de l'intégrité de notre BD, en passant par la mise en contexte de notre projet, ce dernier nous a fait prendre conscience du recul et de la rigueur qu'il faut avoir vis-à-vis du problème rencontré pour créer un schéma correct associé.\smallskip
         
@@ -264,5 +283,8 @@
   
         \noindent Cependant, elle reste correcte et permet de répondre aux besoins essentiels d'un service de livraison de nourriture. Les rôles permettent d'assurer son intégrité et les triggers, fonctions/procédures et view une certaine fonctionnalité. De plus, après deux itérations de notre algorithme de décomposition, nous avons finis par trouver un modèle relationnel qui nous correspondait.\smallskip
 
-        \noindent Pour conclure, ce projet nous aura permis de bien saisir le module de Base de Données 2 dans son entièreté tout en se rendant compte des différentes étapes essentielles à la création d'un tel modèle.
+        \noindent Pour conclure, ce projet nous aura permis de bien saisir le module de Base de Données 2 dans son entièreté tout en se rendant compte des différentes étapes essentielles à la création d'un tel modèle.\newpage
+
+
+
 \end{document}
