@@ -1,0 +1,7 @@
+prompt *************** TEST DES TRIGGERS ****************
+
+prompt =======> TRIGGER INTERDISANT QU''UN LIVREUR SOIT SON PROPRE CLIENT 
+
+INSERT INTO Commande VALUES('23 Rue des Carmes', 'Billaud', 'Mael', 'Billaud', 'Mael', TO_DATE('2021-DEC-25 22:30','YYYY-MON-DD HH24:MI','NLS_DATE_LANGUAGE=AMERICAN'), 'Yellow Curry', 10);
+
+prompt INSERTION IMPOSSIBLE CAR LE CLIENT ET LE LIVREUR SONT LA MÊME PERSONNE
