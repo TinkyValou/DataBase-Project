@@ -5,10 +5,10 @@ CREATE or REPLACE TRIGGER incr_nb_command_aft_insert_row
 BEFORE INSERT ON COMMANDE
 FOR EACH ROW
 DECLARE
--- on créé une variable poubelle pour que le trigger se résolve.
-poubelle NUMBER;
+-- on créé une variable temp pour que le trigger se résolve.
+temp NUMBER;
 BEGIN
-  SELECT number_of_commande.nextval INTO poubelle FROM dual;
+  SELECT number_of_commande.nextval INTO temp FROM dual;
 END incr_nb_command_aft_insert_row;
 /
 
